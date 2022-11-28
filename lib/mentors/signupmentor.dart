@@ -125,7 +125,7 @@ class _SignupScreenStateMn extends State<SignupScreenMn> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text('Already have an account?'),
+                  const Text('Already have an account?', style: TextStyle(color: Colors.white60),),
                   TextButton(
                     child: const Text(
                       'Sign in',

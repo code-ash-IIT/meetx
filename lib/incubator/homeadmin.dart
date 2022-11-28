@@ -73,7 +73,7 @@ class _AdminHomeState extends State<AdminHome> {
                   'Admin-Home',
                   style: TextStyle(fontWeight: FontWeight.bold,
                     color: Color.fromRGBO(
-                        255, 72, 0, 1.0),
+                        255, 255, 255, 1.0),
                     fontSize: 40,
                     // fontStyle: FontStyle.italic
                   ),
@@ -87,7 +87,8 @@ class _AdminHomeState extends State<AdminHome> {
                         contentPadding: const EdgeInsets.all(5),
                         leading: Icon(
                           Icons.email,
-                          color: Color.fromRGBO(0, 0, 0, 0.8666666666666667),
+                          color: Color.fromRGBO(
+                              255, 255, 255, 0.8666666666666667),
                         ),
                         title: TextField(
                           controller: TextEditingController(text: _mentorEmail),
@@ -98,11 +99,13 @@ class _AdminHomeState extends State<AdminHome> {
                           maxLines: null,
                           style: TextStyle(
                               fontSize: 18,
-                              color: Color.fromRGBO(0, 0, 0, 0.8666666666666667),
+                              color: Color.fromRGBO(
+                                  255, 255, 255, 0.8666666666666667),
                               fontWeight: FontWeight.w400),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: "Mentor's email",
+                            hintText: "Mentor's email",hintStyle: TextStyle(color: Color.fromRGBO(244, 244, 244, 1)),
+
                           ),
                         ),
                       ),
@@ -110,7 +113,8 @@ class _AdminHomeState extends State<AdminHome> {
                         contentPadding: const EdgeInsets.all(5),
                         leading: Icon(
                           Icons.email,
-                          color: Color.fromRGBO(0, 0, 0, 0.8666666666666667),
+                          color: Color.fromRGBO(
+                              253, 253, 253, 0.8666666666666667),
                         ),
                         title: TextField(
                           controller: TextEditingController(text: _startupEmail),
@@ -121,11 +125,12 @@ class _AdminHomeState extends State<AdminHome> {
                           maxLines: null,
                           style: TextStyle(
                               fontSize: 18,
-                              color: Color.fromRGBO(0, 0, 0, 0.8666666666666667),
+                              color: Color.fromRGBO(
+                                  255, 255, 255, 0.8666666666666667),
                               fontWeight: FontWeight.w400),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: "Startup's email",
+                            hintText: "Startup's email",hintStyle: TextStyle(color: Color.fromRGBO(244, 244, 244, 1)),
                           ),
                         ),
                       ),
@@ -205,60 +210,58 @@ class _AdminHomeState extends State<AdminHome> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(5),
-                  child: Row(
-                    children: <Widget>[
-
-                      Expanded(child: ElevatedButton(
-                        style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
-                                252, 252, 8, 1.0)),
-                            backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
-                                128, 0, 255, 0.5725490196078431)),
-                            padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
-                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25)))
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EventCalendar(mentorMail:_mentorEmail,startupMail:_startupEmail, mail: this.mmail,)));
-                        },
-                        child: const Text('Look up schedule'),
-                      )),
-
-                      Expanded(child: ElevatedButton(
-                        style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
-                                252, 252, 8, 1.0)),
-                            backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
-                                128, 0, 255, 0.5725490196078431)),
-                            padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
-                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25)))
-                        ),
-                        onPressed: () {
-                          _signOut();
-                        },
-                        child: const Text('Log out'),
-                      )),
-
-                      Expanded(child: ElevatedButton(
-                        style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
-                                252, 252, 8, 1.0)),
-                            backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
-                                128, 0, 255, 0.5725490196078431)),
-                            padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
-                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25)))
-                        ),
-                        onPressed: () {
-                          // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CalendarEvents()));
-                        },
-                        child: const Text('gCalender'),
-                      )),
-
-                    ],
+                Padding(padding: EdgeInsets.all(10)),
+                ButtonTheme(
+                  minWidth: 500,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
+                            1, 42, 76, 1.0)),
+                        backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(244, 244, 244, 1)),
+                        padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25)))
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EventCalendar(mentorMail:_mentorEmail,startupMail:_startupEmail, mail: this.mmail,)));
+                    },
+                    child: const Text('Look up schedule'),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(10)),
+                ButtonTheme(
+                  minWidth: 500,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
+                            1, 42, 76, 1.0)),
+                        backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(244, 244, 244, 1)),
+                        padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25)))
+                    ),
+                    onPressed: () {
+                      _signOut();
+                    },
+                    child: const Text('Log out'),
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(10)),
+                ButtonTheme(
+                  minWidth: 500,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
+                            1, 42, 76, 1.0)),
+                        backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(244, 244, 244, 1)),
+                        padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25)))
+                    ),
+                    onPressed: () {
+                      // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CalendarEvents()));
+                    },
+                    child: const Text('gCalender'),
                   ),
                 ),
 
