@@ -46,7 +46,7 @@ class _SignupScreenStateSt extends State<SignupScreenSt> {
                   child: const Text(
                     'Meet-X',
                     style: TextStyle(
-                        color: Colors.deepOrangeAccent,
+                        color: Colors.white,
                         fontWeight: FontWeight.w900,
                         fontSize: 30),
                   )),
@@ -65,9 +65,17 @@ class _SignupScreenStateSt extends State<SignupScreenSt> {
                 padding: const EdgeInsets.all(10),
                 child: TextField(
                   controller: nameController,
+                  style: TextStyle(color: Colors.white60),
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Email',
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white60,width: 2),
+                      ),
+                      labelText: 'Email',
+                      labelStyle: TextStyle(color: Colors.white60),
+                      icon: Icon(
+                        Icons.email,
+                        color: Colors.white60,
+                      )
                   ),
                 ),
               ),
@@ -75,35 +83,49 @@ class _SignupScreenStateSt extends State<SignupScreenSt> {
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                 child: TextField(
                   obscureText: true,
+                  style: TextStyle(color: Colors.white60),
                   controller: passwordController,
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white60,width: 2),
+                      ),
+                      labelText: 'Password',
+                      labelStyle: TextStyle(color: Colors.white60),
+                      // fillColor: Colors.white60,
+                      icon: Icon(
+                        Icons.password,color: Colors.white60,
+                      )
                   ),
                 ),
               ),
               Container(
-                  height: 70,
+                  height: 80,
                   padding: const EdgeInsets.fromLTRB(400, 20, 400, 0),
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25)))
+                  child: ButtonTheme(
+                    minWidth: 500,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
+                              1, 42, 76, 1.0)),
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                          padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 30.0, horizontal: 150.0)),
+                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)))
+                      ),
+                      child: const Text('Sign-up',style: TextStyle(fontWeight: FontWeight.bold),),
+                      onPressed: () async{
+                        _register();
+                        // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>StartupHome()));//signup screen
+                        print(nameController.text);
+                        print(passwordController.text);
+                      },
                     ),
-                    child: const Text('Sign-up'),
-                    onPressed: () async{
-                      _register();
-                      // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>StartupHome()));//signup screen
-                      print(nameController.text);
-                      print(passwordController.text);
-                    },
                   )
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text('Already have an account?'),
+                  const Text('Already have an account?',style: TextStyle(color: Colors.white),),
                   TextButton(
                     child: const Text(
                       'Sign in',
@@ -121,7 +143,7 @@ class _SignupScreenStateSt extends State<SignupScreenSt> {
                 padding: const EdgeInsets.fromLTRB(200, 20, 200, 0),
                 child: ElevatedButton(
                   style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all<Color>(Colors.yellow),
+                      foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.white30),
                       padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
@@ -130,7 +152,7 @@ class _SignupScreenStateSt extends State<SignupScreenSt> {
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Choices()));
                   },
-                  child: Text('GO TO HOME'),
+                  child: Text('GO TO HOME',style: TextStyle(fontWeight: FontWeight.bold),),
                 ),
               ),
             ],

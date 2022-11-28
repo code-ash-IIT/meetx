@@ -144,32 +144,39 @@ class EventCalendarState extends State<EventCalendar> {
         resizeToAvoidBottomInset: false,
         body: Padding(
             padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
-            child: Column(
-              children: [
-                SizedBox(height: 600 ,child: getEventCalendar(_calendarView, _events, onCalendarTapped)),
-                Padding(
-                  padding: EdgeInsets.all(5),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(child: ElevatedButton(
+            child: Container(
+              color: Color.fromRGBO(244, 244, 242, 1),
+              child: Column(
+                children: [
+                  SizedBox(height: 600 ,child: getEventCalendar(_calendarView, _events, onCalendarTapped)),
+                  Align(
+                    alignment: Alignment.center,
+                    child: ButtonTheme(
+                      minWidth: 500.0,
+                      // height: 50.0,
+                      child: ElevatedButton(
                         style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
-                                252, 252, 8, 1.0)),
+                            foregroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(
+                                244, 244, 244, 1.0)),
                             backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
-                                128, 0, 255, 0.5725490196078431)),
-                            padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
+                                1, 42, 76, 1.0)),
+                            padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 30.0, horizontal: 150.0)),
                             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25)))
                         ),
+
+
+
                         onPressed: () {
                           _signOut();
                         },
-                        child: const Text('Log out'),
-                      )),
-                    ],
+                        child: const Text('Log out',
+                          style: TextStyle(fontWeight: FontWeight.bold),),
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             )));
   }
 

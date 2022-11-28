@@ -49,7 +49,7 @@ class _LoginScreenStateSt extends State<LoginScreenSt> {
                     child: const Text(
                       'Meet-X',
                       style: TextStyle(
-                          color: Colors.deepOrangeAccent,
+                          color: Colors.white,
                           fontWeight: FontWeight.w900,
                           fontSize: 30),
                     )),
@@ -68,11 +68,16 @@ class _LoginScreenStateSt extends State<LoginScreenSt> {
                   padding: const EdgeInsets.all(10),
                   child: TextField(
                     controller: nameController,
+                    style: TextStyle(color: Colors.white60),
                     decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white60,width: 2),
+                      ),
                       labelText: 'User Name',
+                      labelStyle: TextStyle(color: Colors.white60),
                       icon: Icon(
                         Icons.email,
+                        color: Colors.white60,
                       )
                     ),
                   ),
@@ -81,12 +86,17 @@ class _LoginScreenStateSt extends State<LoginScreenSt> {
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: TextField(
                     obscureText: true,
+                    style: TextStyle(color: Colors.white60),
                     controller: passwordController,
                     decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white60,width: 2),
+                      ),
                       labelText: 'Password',
+                        labelStyle: TextStyle(color: Colors.white60),
+                      // fillColor: Colors.white60,
                       icon: Icon(
-                        Icons.password,
+                        Icons.password,color: Colors.white60,
                       )
                     ),
                   ),
@@ -98,29 +108,39 @@ class _LoginScreenStateSt extends State<LoginScreenSt> {
                   child: const Text('Forgot Password',),
                 ),
                 Container(
-                    height: 70,
+                    height: 80,
                     padding: const EdgeInsets.fromLTRB(400, 20, 400, 0),
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25)))
+                    child: ButtonTheme(
+                      minWidth: 500.0,
+                      // height: 50.0,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
+                                1, 42, 76, 1.0)),
+                            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                            padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 30.0, horizontal: 150.0)),
+                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)))
+                        ),
+
+
+
+                        onPressed: () {
+                          _SignIn();
+                        },
+                        child: const Text('Login',
+                          style: TextStyle(fontWeight: FontWeight.bold),),
                       ),
-                      child: const Text('Login'),
-                      onPressed: () {
-                        _SignIn();
-                        // _success == 2 ? Navigator.of(context).push(MaterialPageRoute(builder: (context)=>StartupHome())) : print("Failed");
-                      },
-                    )
+                    ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    const Text('Does not have account?'),
+                    const Text('Does not have account?', style: TextStyle(color: Colors.white60),),
                     TextButton(
                       child: const Text(
                         'Sign up',
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 10),
                       ),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignupScreenSt()));//signup screen
@@ -131,20 +151,23 @@ class _LoginScreenStateSt extends State<LoginScreenSt> {
 
                 Container(
                     height: 80,
-                    padding: const EdgeInsets.fromLTRB(200, 20, 200, 0),
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all<Color>(Colors.yellow),
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white30),
-                          padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25)))
+                    padding: const EdgeInsets.fromLTRB(400, 20, 400, 0),
+                    child: ButtonTheme(
+                      minWidth: 500,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                            backgroundColor: MaterialStateProperty.all<Color>(Colors.white30),
+                            padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
+                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)))
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Choices()));
+                        },
+                        child: const Text('GO TO HOME',style: TextStyle(fontWeight: FontWeight.bold),),
                       ),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Choices()));
-                      },
-                      child: Text('GO TO HOME'),
-                    ),
+                    )
                 ),
               ],
             ))

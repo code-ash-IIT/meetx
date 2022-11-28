@@ -31,54 +31,60 @@ class _StartupHomeState extends State<StartupHome> {
             child: Column(
               // crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Text(
-                  'Startup-Home',
+                const Text(
+                  'Startup HomePage',
                   style: TextStyle(fontWeight: FontWeight.bold,
-                    color: Colors.deepOrangeAccent.withOpacity(0.6),
+                    color: Colors.white60,
                     fontSize: 40,
                     // fontStyle: FontStyle.italic
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(50)),
-                Padding(
-                  padding: EdgeInsets.all(50),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(child: ElevatedButton(
-                        style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(Colors.yellow),
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
-                            padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
-                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25)))
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EventCalendar(mail:this.mmail)));
-                        },
-                        child: const Text('Edit my schedule'),
-                      )),
-                    ],
+                Center(
+                  child: ButtonTheme(
+                    minWidth: 500.0,
+                    // height: 50.0,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
+                              1, 42, 76, 1.0)),
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                          padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 30.0, horizontal: 150.0)),
+                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)))
+                      ),
+
+
+
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EventCalendar(mail:this.mmail)));
+                      },
+                      child: const Text('Edit my schedule',
+                        style: TextStyle(fontWeight: FontWeight.bold),),
+                    ),
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
-                Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(child: ElevatedButton(
-                        style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(Colors.yellow),
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
-                            padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
-                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25)))
-                        ),
-                        onPressed: () {
-                          _signOut();
-                        },
-                        child: const Text('Log out'),
-                      )),
-                    ],
+                ButtonTheme(
+                  minWidth: 500.0,
+                  // height: 50.0,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
+                            1, 42, 76, 1.0)),
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                        padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 30.0, horizontal: 150.0)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25)))
+                    ),
+
+
+
+                    onPressed: () {
+                      _signOut();
+                    },
+                    child: const Text('Log out',
+                      style: TextStyle(fontWeight: FontWeight.bold),),
                   ),
                 ),
               ],

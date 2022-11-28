@@ -11,7 +11,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(GetMaterialApp(
-    theme: new ThemeData(scaffoldBackgroundColor: const Color.fromRGBO(220,239,236, 1.0)),
+    theme: new ThemeData(scaffoldBackgroundColor: const Color.fromRGBO(18, 27, 65, 1.0)),
     home: Choices(),
   ));
 //   FirebaseAuth.instance
