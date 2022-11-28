@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
-import 'startup/loginst.dart';
-import 'mentors/loginmentor.dart';
-import 'incubator/loginadmin.dart';
+import 'package:meetx/startup/calendar.dart';
+import '../homepage.dart';
+import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class Choices extends StatefulWidget{
+final FirebaseAuth _auth = FirebaseAuth.instance;
+
+class StartupHome extends StatefulWidget{
+  final String email;
+  const StartupHome({Key? key, required this.email}) : super(key:key);
   @override
-  _State createState() => _State();
+  _StartupHomeState createState() => _StartupHomeState(mmail: this.email);
 }
 
-class _State extends State<Choices> {
+class _StartupHomeState extends State<StartupHome> {
+  final String mmail;
+  _StartupHomeState({Key? key, required this.mmail});
+
+  void _signOut() async{
+    _auth.signOut();
+    print("Signed out successfully!");
+    Get.offAll(()=>Choices());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,29 +32,19 @@ class _State extends State<Choices> {
               // crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Text(
-                  'Meet-X',
+                  'Startup-Home',
                   style: TextStyle(fontWeight: FontWeight.bold,
-                      color: Colors.deepOrangeAccent.withOpacity(0.6),
-                      fontSize: 40,
-                      // fontStyle: FontStyle.italic
+                    color: Colors.deepOrangeAccent.withOpacity(0.6),
+                    fontSize: 40,
+                    // fontStyle: FontStyle.italic
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(50)),
-                Text(
-                    'Continue as . . .',
-                  style: TextStyle(fontWeight: FontWeight.bold,
-                  color: Colors.black.withOpacity(0.6),
-                    fontSize: 40,
-                    fontStyle: FontStyle.italic
-                  ),
-                ),
-
                 Padding(
                   padding: EdgeInsets.all(50),
                   child: Row(
                     children: <Widget>[
                       Expanded(child: ElevatedButton(
-                        child: const Text('As Mentor'),
                         style: ButtonStyle(
                             foregroundColor: MaterialStateProperty.all<Color>(Colors.yellow),
                             backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
@@ -48,13 +52,20 @@ class _State extends State<Choices> {
                             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25)))
                         ),
-
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginScreenMn()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EventCalendar(mail:this.mmail)));
                         },
+                        child: const Text('Edit my schedule'),
                       )),
+                    ],
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(10)),
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Row(
+                    children: <Widget>[
                       Expanded(child: ElevatedButton(
-                        child: Text('As Incubator'),
                         style: ButtonStyle(
                             foregroundColor: MaterialStateProperty.all<Color>(Colors.yellow),
                             backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
@@ -63,21 +74,9 @@ class _State extends State<Choices> {
                                 borderRadius: BorderRadius.circular(25)))
                         ),
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginScreenAd()));
+                          _signOut();
                         },
-                      )),
-                      Expanded(child: ElevatedButton(
-                        child: Text('As Startup'),
-                        style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(Colors.yellow),
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
-                            padding: MaterialStateProperty.all(const EdgeInsets.all(25)),
-                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25)))
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginScreenSt()));
-                        },
+                        child: const Text('Log out'),
                       )),
                     ],
                   ),
