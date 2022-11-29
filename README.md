@@ -1,6 +1,6 @@
 # meetx
 
-A new Flutter project.
+Hosted URL : [See deployment](https://meet-x-df6f4.web.app/)
 
 ## Getting Started
 
